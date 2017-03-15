@@ -17,7 +17,7 @@ namespace ContactList.Data.Repositories
             {
                 var query = connection.Query<dynamic>(@"
                     SELECT
-	                    d.id as DrinkId, 
+	                    d.id as Id, 
                         d.name as Name, 
                         d.glass as Glass,
                         d.instructions as Instructions,
@@ -31,7 +31,7 @@ namespace ContactList.Data.Repositories
                     inner join ingredient i on i.id = di.ingredient_id
                     ");
 
-                AutoMapper.Configuration.AddIdentifiers(typeof (Drink), new List<string> {"DrinkId"});
+                AutoMapper.Configuration.AddIdentifiers(typeof (Drink), new List<string> {"Id"});
 
                 return AutoMapper.MapDynamic<Drink>(query).ToList();
             }

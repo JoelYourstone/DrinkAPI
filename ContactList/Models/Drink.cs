@@ -5,7 +5,7 @@ namespace ContactList.Models
 {
     public class Drink
     {
-        public int DrinkId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Glass { get; set; }
         public string Instructions { get; set; }
