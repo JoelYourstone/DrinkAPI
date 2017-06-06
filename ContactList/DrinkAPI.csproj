@@ -114,6 +114,7 @@
     <Content Include="Web.config" />
     <Content Include="packages.config" />
     <Content Include="appSettings.config" />
+    <Content Include="apk\DanielsDrinks.apk" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

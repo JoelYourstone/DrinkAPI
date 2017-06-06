@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ContactList.Controllers;
 using ContactList.Infrastructure;
 using ContactList.Models;
 using Dapper;
@@ -35,6 +36,34 @@ namespace ContactList.Data.Repositories
 
                 return AutoMapper.MapDynamic<Drink>(query).ToList();
             }
-        } 
+        }
+
+        public Drink Add(AddDrinkModel drink)
+        {
+            using (var connection = ConnectionFactory.GetOpenConnection())
+            {
+                var drinkExists = connection.Query<int?>($@"
+                    SELECT
+                        id
+                    FROM
+                        drink
+                    WHERE
+                        name = {drink.Name}
+                ").FirstOrDefault();
+
+                if (drinkExists != null)
+                {
+                    return null;
+                }
+
+                var sql = @"
+                    INSERT INTO [Drink] () VALUES (@Stuff);
+                    SELECT CAST(SCOPE_IDENTITY() as int)";
+
+
+            }
+
+            return null;
+        }
     }
 }

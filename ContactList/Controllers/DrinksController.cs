@@ -34,8 +34,24 @@ namespace ContactList.Controllers
         public JsonResult<List<int>> UserDrinks()
         {
             return Json(new List<int>(), JsonSerializerSettings);
-            ;
-        } 
+        }
+
+        [HttpPost]
+        [Route("~/drinks/add")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(Drink))]
+        public JsonResult<Drink> Add([FromBody] AddDrinkModel drink)
+        {
+            var drinksRepository = new DrinksRepository();
+            drinksRepository.Add(drink);
+            return Json(new Drink(), JsonSerializerSettings);
+        }
     }
 
+    public class AddDrinkModel
+    {
+        public string Name { get; set; }
+        public string Glass { get; set; }
+        public string Instructions { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+    }
 }
