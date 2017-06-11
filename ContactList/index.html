@@ -6,14 +6,22 @@
 </head>
 <body>
 
-
-
-<h1>Get dronk'd</h1>
-  <a href="apk/DanielsDrinks.apk">here</a>
-
     
 
+<h1>Get dronk'd</h1>
+<a href="apk/DanielsDrinks.apk">here</a>
+    
+    
 
+    <a href="#" id="test">Post</a>
+
+<script type="text/javascript">
+    document.getElementById("test").onclick = function() {
+        var oReq = new XMLHttpRequest();
+oReq.open("POST", "/drinks/add");
+oReq.send();
+    };
+</script>
 
 
 </body>
