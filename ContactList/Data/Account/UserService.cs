@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ContactList.Infrastructure;
+﻿using System.Linq;
 using Dapper;
+using DrinkAPI.Infrastructure;
 using DrinkAPI.Models;
 
 namespace DrinkAPI.Data.Account
@@ -26,16 +23,6 @@ namespace DrinkAPI.Data.Account
                     WHERE Email = @Email";
 
                 return connection.Query<User>(query, new { Email = email }).FirstOrDefault();
-            }
-        }
-
-        public string Register(string email, string password, string firstName, string lastName)
-        {
-            using (var connection = ConnectionFactory.GetOpenConnection())
-            {
-                const string query = @"";
-                return null;
-                //return connection.Query<User>(query, new { Email = email }).FirstOrDefault();
             }
         }
     }

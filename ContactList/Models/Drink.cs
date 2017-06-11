@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ContactList.Models
+namespace DrinkAPI.Models
 {
     public class Drink
     {

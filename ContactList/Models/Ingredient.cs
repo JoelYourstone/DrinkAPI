@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Web;
-
-namespace ContactList.Models
+﻿namespace DrinkAPI.Models
 {
     public class Ingredient
     {

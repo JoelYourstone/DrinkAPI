@@ -1,18 +1,14 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Results;
-using ContactList.Data.Repositories;
-using ContactList.Infrastructure;
-using ContactList.Models;
-using Dapper;
+using DrinkAPI.Data.Repositories;
+using DrinkAPI.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Slapper;
 using Swashbuckle.Swagger.Annotations;
 
-namespace ContactList.Controllers
+namespace DrinkAPI.Controllers
 {
     public class DrinksController : ApiController
     {
@@ -38,12 +34,15 @@ namespace ContactList.Controllers
 
         [HttpPost]
         [Route("~/drinks/add")]
-        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(Drink))]
-        public JsonResult<Drink> Add([FromBody] AddDrinkModel drink)
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(AddDrinkResult))]
+        public JsonResult<AddDrinkResult> Add([FromBody] AddDrinkModel drink)
         {
             var drinksRepository = new DrinksRepository();
-            drinksRepository.Add(drink);
-            return Json(new Drink(), JsonSerializerSettings);
+            if (drinksRepository.Add(drink))
+            {
+                return Json(new AddDrinkResult() {IsSuccess = true}, JsonSerializerSettings);
+            }
+            return Json(new AddDrinkResult() { IsSuccess = false , Message = "Drink already exists"}, JsonSerializerSettings);
         }
     }
 

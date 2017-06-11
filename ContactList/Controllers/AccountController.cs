@@ -2,8 +2,7 @@
 using System.Web.Http.Results;
 using DrinkAPI.Data.Account;
 
-
-namespace ContactList.Controllers
+namespace DrinkAPI.Controllers
 {
     [Authorize]
     public class AccountController : ApiController
@@ -28,11 +27,7 @@ namespace ContactList.Controllers
                 return Json("");
             }
 
-            userService.Register(email, password, firstName, lastName);
-
-
             return null;
-
         }
     }
 }
